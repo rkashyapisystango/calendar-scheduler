@@ -1,14 +1,29 @@
 export const events = [
   {
     title: 'event 1',
-    date: '2020-02-20',
     resourceId: 'a',
     description: 'first description',
+    start: '2020-02-25T08:00',
+    end: '2020-02-25T09:00',
   },
   {
     title: 'event 2',
-    date: '2020-02-19',
-    resourceId: 'b',
+    date: '2020-02-24',
+    resourceId: 'a',
+    description: '🍺🍺🍺🍺🍺🍺🍺🍺',
+    start: '2020-02-25T09:00',
+    end: '2020-02-25T10:00',
+  },
+  {
+    title: 'event 3',
+    date: '2020-02-24',
+    resourceId: 'a',
+    description: '🍺🍺🍺🍺🍺🍺🍺🍺',
+  },
+  {
+    title: 'event 4',
+    date: '2020-02-24',
+    resourceId: 'a',
     description: '🍺🍺🍺🍺🍺🍺🍺🍺',
   },
   { title: 'event 2-1', date: '2020-02-19', resourceId: 'b' },

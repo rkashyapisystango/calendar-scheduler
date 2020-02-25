@@ -63,5 +63,9 @@
             "pragma": "React",
             "version": "15.4.2"
         }
+    },
+    "env": {
+        "browser": true,
+        "node": true
     }
 }

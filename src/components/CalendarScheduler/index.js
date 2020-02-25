@@ -12,37 +12,48 @@ import { eventDetail } from './setEvent';
 // import './main.scss'; // webpack must be configured to do this
 //timeGrid, resourceTimeline
 const CalendarScheduler = props => {
-  const { eventIconClick, events, resources } = props;
+  const {
+    eventIconClick,
+    events,
+    resources,
+    moveEvent,
+    headerData,
+    defaultViewData,
+  } = props;
   const firstDay = 0;
-  console.log('events');
-  console.log(events);
-  console.log('events');
   return (
     <FullCalendar
       timeZone="UTC"
-      header={{
-        left: 'prev,next today',
-        center: 'title',
-        right: 'resourceTimelineWeek,resourceTimelineDay,resourceTimelineMonth',
-      }}
-      defaultView="resourceTimelineMonth"
+      header={
+        headerData || {
+          left: 'prev,next today',
+          center: 'title',
+          right:
+            'resourceTimelineWeek,resourceTimelineDay,resourceTimelineMonth',
+        }
+      }
+      defaultView={defaultViewData || 'resourceTimelineWeek'}
       views={{
         resourceTimelineWeek: {
           type: 'resourceTimeline',
           firstDay: { firstDay },
           slotLabelFormat: 'ddd',
           slotDuration: { days: 1 },
+          allDay: true,
         },
         resourceTimelineDay: {
           type: 'resourceTimeline',
           slotDuration: '01:00',
+          allDay: true,
         },
         resourceTimelineMonth: {
           slotLabelFormat: 'ddd DD',
+          allDay: true,
         },
       }}
       droppable={true}
       editable={true}
+      eventResizableFromStart={true}
       schedulerLicenseKey="GPL-My-Project-Is-Open-Source"
       plugins={[
         resourceTimelinePlugin,
@@ -54,28 +65,16 @@ const CalendarScheduler = props => {
       resourceGroupField="building"
       events={events}
       resources={resources}
-      eventRender={info => eventDetail(info, eventIconClick)}
-      eventDrop={(event, dayDelta, minuteDelta, allDay, revertFunc) => {
-        console.log(event, 'event');
-        // alert(
-        //   event.title +
-        //     ' was moved ' +
-        //     dayDelta +
-        //     ' days and ' +
-        //     minuteDelta +
-        //     ' minutes.',
-        // );
-
-        // if (allDay) {
-        //   alert('Event is now all-day');
-        // } else {
-        //   alert('Event has a time-of-day');
-        // }
-
-        // // if (!confirm('Are you sure about this change?')) {
-        // //   revertFunc();
-        // // }
+      businessHours={true}
+      selectable={true}
+      eventRender={info => {
+        setTimeout(() => {
+          eventDetail(info, eventIconClick);
+        });
       }}
+      eventDrop={info => moveEvent(info)}
+      eventOverlap={false}
+      slotEventOverlap={false}
     />
   );
 };
@@ -84,6 +83,10 @@ CalendarScheduler.propTypes = {
   eventIconClick: PropTypes.func,
   events: PropTypes.array,
   resources: PropTypes.array,
+  moveEvent: PropTypes.func,
+  firstTimeOut: PropTypes.bool,
+  headerData: PropTypes.object,
+  defaultViewData: PropTypes.string,
 };
 
 export default CalendarScheduler;

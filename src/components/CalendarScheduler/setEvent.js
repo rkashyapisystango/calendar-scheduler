@@ -6,29 +6,29 @@ export const eventDetail = (info, eventIconClick) => {
   const { event, el } = info;
   ReactTooltip.rebuild();
   const content = (
-    <div
-      data-tip={`<div><p>${event.title}</p><p>${event.extendedProps
-        .description || ''}<strong>test</strong></p></div>`}
-      data-html={true}
-    >
-      <ReactTooltip />
+    <span className="fc-title-wrap">
+      {/* <ReactTooltip /> */}
       <EventIconWrp>
         <i
           className="fa fa-cut"
-          onClick={() => eventIconClick('first click')}
+          onClick={() => eventIconClick('first click', event)}
         />
         <i
           className="fa fa-bold"
-          onClick={() => eventIconClick('second click')}
+          onClick={() => eventIconClick('second click', event)}
         />
         <i
           className="fa fa-align-left"
-          onClick={() => eventIconClick('third click')}
+          onClick={() => eventIconClick('third click', event)}
         />
-        <i className="fa fa-plus" onClick={() => eventIconClick('add new')} />
+        <i
+          className="fa fa-plus"
+          onClick={() => eventIconClick('add new', event)}
+        />
       </EventIconWrp>
-      {event.title}
-    </div>
+      <div className="fc-resizer fc-start-resizer" />
+      <div className="fc-resizer fc-end-resizer" />
+    </span>
   );
   ReactDOM.render(content, el);
   return el;
