@@ -18,7 +18,10 @@ const CalendarScheduler = props => {
     resources,
     moveEvent,
     headerData,
+    defaultView,
     defaultViewData,
+    renderCustomEvent,
+    schedulerLicenseKey,
   } = props;
   const firstDay = 0;
   return (
@@ -32,29 +35,38 @@ const CalendarScheduler = props => {
             'resourceTimelineWeek,resourceTimelineDay,resourceTimelineMonth',
         }
       }
-      defaultView={defaultViewData || 'resourceTimelineWeek'}
-      views={{
-        resourceTimelineWeek: {
-          type: 'resourceTimeline',
-          firstDay: { firstDay },
-          slotLabelFormat: 'ddd',
-          slotDuration: { days: 1 },
-          allDay: true,
-        },
-        resourceTimelineDay: {
-          type: 'resourceTimeline',
-          slotDuration: '01:00',
-          allDay: true,
-        },
-        resourceTimelineMonth: {
-          slotLabelFormat: 'ddd DD',
-          allDay: true,
-        },
+      defaultView={defaultView || 'resourceTimelineWeek'}
+      views={
+        defaultViewData || {
+          resourceTimelineWeek: {
+            type: 'resourceTimeline',
+            firstDay: { firstDay },
+            slotLabelFormat: 'ddd',
+            slotDuration: { days: 1 },
+            allDay: true,
+          },
+          resourceTimelineDay: {
+            type: 'resourceTimeline',
+            slotDuration: '01:00',
+            allDay: true,
+          },
+          resourceTimelineMonth: {
+            slotLabelFormat: 'ddd DD',
+            allDay: true,
+          },
+        }
+      }
+      eventRender={info => {
+        if (renderCustomEvent) {
+          setTimeout(() => {
+            eventDetail(info, eventIconClick);
+          });
+        }
       }}
       droppable={true}
       editable={true}
       eventResizableFromStart={true}
-      schedulerLicenseKey="GPL-My-Project-Is-Open-Source"
+      schedulerLicenseKey={schedulerLicenseKey}
       plugins={[
         resourceTimelinePlugin,
         resourceDayGridPlugin,
@@ -67,14 +79,14 @@ const CalendarScheduler = props => {
       resources={resources}
       businessHours={true}
       selectable={true}
-      eventRender={info => {
-        setTimeout(() => {
-          eventDetail(info, eventIconClick);
-        });
-      }}
       eventDrop={info => moveEvent(info)}
       eventOverlap={false}
       slotEventOverlap={false}
+      selectHelper={true}
+      eventMouseover={(event, jsEvent, view) =>{
+        console.log('testing')
+      }}
+      eventMouseout={() => console.log('testing')}
     />
   );
 };
@@ -86,7 +98,10 @@ CalendarScheduler.propTypes = {
   moveEvent: PropTypes.func,
   firstTimeOut: PropTypes.bool,
   headerData: PropTypes.object,
-  defaultViewData: PropTypes.string,
+  defaultView: PropTypes.string,
+  renderEvent: PropTypes.bool,
+  defaultViewData: PropTypes.object,
+  schedulerLicenseKey: PropTypes.string,
 };
 
 export default CalendarScheduler;
