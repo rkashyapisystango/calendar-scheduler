@@ -1,0 +1,7 @@
+.curosr-pointer {
+    cursor: pointer;
+}
+
+.calender-inner-event:hover {
+    color: #418dfa;
+}

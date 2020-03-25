@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { EventDetail } from './setEvent';
 // import ReactTooltip from 'react-tooltip';
 import 'assets/css/popover.css';
+import 'assets/css/common.css';
 // import dayGridPlugin from '@fullcalendar/daygrid';
 //timeGrid, resourceTimeline
 const CalendarScheduler = props => {
@@ -103,6 +104,7 @@ const CalendarScheduler = props => {
         scrollTime="00:00:00"
         contentHeight={contentHeight ? contentHeight : '500'}
         aspectRatio={aspectRatio ? aspectRatio : '1:5'}
+        dayClick={() => console.log('testing')}
       />
     </>
   );

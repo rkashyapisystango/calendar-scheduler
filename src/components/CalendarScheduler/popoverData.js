@@ -5,10 +5,20 @@ const popoverData = (info, props) => {
   return (
     <div>
       {popEventText && (
-        <p onClick={() => popEventClick(info)}>{popEventText}</p>
+        <p
+          className="curosr-pointer calender-inner-event"
+          onClick={() => popEventClick(info)}
+        >
+          {popEventText}
+        </p>
       )}
       {popEvent2Text && (
-        <p onClick={() => popEvent2Click(info)}>{popEvent2Text}</p>
+        <p
+          className="curosr-pointer calender-inner-event"
+          onClick={() => popEvent2Click(info)}
+        >
+          {popEvent2Text}
+        </p>
       )}
     </div>
   );
