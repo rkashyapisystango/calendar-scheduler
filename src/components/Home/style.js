@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
 export const CalendarContainer = styled.div`
-  .fc-scroller {
-    height: auto !important;
+  .fc-view-container {
+    width: 100%;
   }
-
-  .fc-head .fc-widget-header {
-    margin-right: 0 !important;
+  .fc-view-container .fc-view {
+    overflow-x: scroll;
   }
-
-  .fc-scroller {
-    overflow: visible !important;
+  .fc-view-container .fc-view > table {
+    width: 1350px;
   }
 `;

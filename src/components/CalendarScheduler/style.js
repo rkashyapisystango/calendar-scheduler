@@ -13,3 +13,11 @@ export const EventIconWrp = styled.div`
     }
   }
 `;
+
+export const OverLayDesign = styled.div`
+  color: white;
+  background: #0d1217;
+  button {
+    height: 60px;
+  }
+`;

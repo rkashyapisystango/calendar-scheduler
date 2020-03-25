@@ -1,7 +1,7 @@
 module.exports = {
-  'plugins': [
+  plugins: [
     '@babel/plugin-transform-react-jsx',
-    '@babel/plugin-syntax-dynamic-import'
+    '@babel/plugin-syntax-dynamic-import',
   ],
-  'presets': ['@babel/preset-env', '@babel/preset-react']
-}
+  presets: ['@babel/preset-env', '@babel/preset-react'],
+};
