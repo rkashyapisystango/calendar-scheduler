@@ -1,9 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-const popoverData = (info, props) => {
-  const { popEventText, popEvent2Text, popEventClick, popEvent2Click } = props;
+import IconFile from './iconFile';
+import { iconFileCasesForPopOver } from './iconFileCases';
+
+const popoverData = (info, props, dateDifference) => {
+  const 
+    { popEventText, 
+      popEvent2Text, 
+      popEventClick, 
+      popEvent2Click, 
+      eventIconClick, 
+      eventIconJson 
+    } = props;
+    const displayIconLink = iconFileCasesForPopOver(eventIconJson, dateDifference);
   return (
-    <div>
+    <div className="fc-popover-wrap">
+      {
+        displayIconLink &&  
+        <IconFile 
+          eventIconJson={eventIconJson}
+          eventIconClick={eventIconClick}
+          info={info}
+        />  
+      }
+     
+        
       {popEventText && (
         <p
           className="curosr-pointer calender-inner-event"

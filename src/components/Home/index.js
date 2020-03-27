@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from 'shared/Layout';
-import Modal from 'shared/Modal';
 
 import CalendarScheduler from '../CalendarScheduler';
 import { events, resources } from './constant';
@@ -8,13 +7,6 @@ import { CalendarContainer } from './style';
 import { popEventClick, popEvent2Click, eventClicked } from './calendarSupport';
 
 const Home = () => {
-  const [open, setOpen] = useState(false);
-
-  const setOpenToggle = () => {
-    setOpen(!open);
-  };
-  // const firstDay = 0;
-
   return (
     <Layout>
       <CalendarContainer>
@@ -48,7 +40,7 @@ const Home = () => {
           events={events}
           resources={resources}
           schedulerLicenseKey="GPL-My-Project-Is-Open-Source"
-          eventItemClick={eventClicked}
+          // eventItemClick={eventClicked}
           popEventClick={popEventClick}
           popEventText="Ops 1"
           popEvent2Text="Ops 2"
@@ -71,16 +63,19 @@ const Home = () => {
           eventBorderColor="yellow"
           contentHeight="500"
           aspectRatio="1:5"
+          eventIconClick={(data, event) => {
+            eventClicked(event, data);
+          }}
+          eventIconJson={{
+            'firstIcon': { 'display': true, 'icon': 'fas fa-edit'},
+            'secondIcon': { 'display': true, 'icon': 'fa fa-plus'},
+            'hideAll': false,
+            'hideFromWeekView': true,
+            'displayPopOverIconInWeek': false,
+          }}
+          funWithoutEvent={(info) => eventClicked(info)}
         />
       </CalendarContainer>
-      <Modal
-        open={open}
-        toggle={() => setOpenToggle(!open)}
-        modalHeader="Title"
-        btnClassName="Submit"
-      >
-        <div>Abc</div>
-      </Modal>
     </Layout>
   );
 };

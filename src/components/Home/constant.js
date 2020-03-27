@@ -4,17 +4,17 @@ export const events = [
     resourceId: 'a',
     description: 'first description',
     id: 1,
-    start: '2020-03-25T08:00',
+    start: '2020-03-27T08:00',
     end: '2020-03-12T09:00',
     color: 'purple', // override!
   },
   {
     title: 'event 2',
-    date: '2020-03-25',
+    date: '2020-03-27',
     resourceId: 'b',
     description: '🍺🍺🍺🍺🍺🍺🍺🍺',
-    start: '2020-03-25T09:00',
-    end: '2020-03-25T10:00',
+    start: '2020-03-27T09:00',
+    end: '2020-03-27T10:00',
     id: 2,
   },
   // {

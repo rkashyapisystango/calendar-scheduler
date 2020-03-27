@@ -12,7 +12,7 @@ export const popEvent2Click = info => {
   );
 };
 
-export const eventClicked = info => {
+export const eventClicked = (info, data) => {
   const { event } = info;
-  alert(`You just clicked an event: {id: ${event.id}, title: ${event.title}}`);
+  alert(`You just clicked an event: {id: ${event.id}, title: ${event.title}} ${data}`);
 };
