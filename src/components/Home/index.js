@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from 'shared/Layout';
 
 import CalendarScheduler from '../CalendarScheduler';
 import { events, resources } from './constant';
 import { CalendarContainer } from './style';
-import { popEventClick, popEvent2Click, eventClicked } from './calendarSupport';
+import { popEventClick, popEvent2Click, eventClicked, singleDateClicked } from './calendarSupport';
 
-const Home = () => {
   return (
     <Layout>
       <CalendarContainer>
@@ -73,9 +72,10 @@ const Home = () => {
             'hideFromWeekView': true,
             'displayPopOverIconInWeek': false,
           }}
-          funWithoutEvent={(info) => eventClicked(info)}
+          funWithoutEvent={(info) => singleDateClicked(info)}
         />
       </CalendarContainer>
+      <div id="clickMethod" />
     </Layout>
   );
 };

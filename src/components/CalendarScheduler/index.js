@@ -104,7 +104,7 @@ const CalendarScheduler = props => {
         scrollTime="00:00:00"
         contentHeight={contentHeight ? contentHeight : '500'}
         aspectRatio={aspectRatio ? aspectRatio : '1:5'}
-        dateClick={funWithoutEvent}
+        dateClick={(data) => funWithoutEvent(data)}
       />
     </>
   );
