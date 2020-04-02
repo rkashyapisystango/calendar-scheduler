@@ -5,7 +5,7 @@ import CalendarScheduler from '../CalendarScheduler';
 import { events, resources } from './constant';
 import { CalendarContainer } from './style';
 import { popEventClick, popEvent2Click, eventClicked, singleDateClicked } from './calendarSupport';
-
+const Home = () => {
   return (
     <Layout>
       <CalendarContainer>
