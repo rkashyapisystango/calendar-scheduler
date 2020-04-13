@@ -12,11 +12,15 @@ const popoverData = (info, props, dateDifference) => {
       eventIconClick, 
       eventIconJson 
     } = props;
-    const displayIconLink = iconFileCasesForPopOver(eventIconJson, dateDifference);
+    let displayIconLink = false;
+    if(eventIconJson !== undefined) {
+      displayIconLink = iconFileCasesForPopOver(eventIconJson, dateDifference);
+    }
   return (
     <div className="fc-popover-wrap">
       {
-        displayIconLink &&  
+        displayIconLink && 
+        eventIconJson !== undefined  &&
         <IconFile 
           eventIconJson={eventIconJson}
           eventIconClick={eventIconClick}

@@ -1,4 +1,6 @@
 export function iconFileCases(data, dateDifference) {
+    if(data === 'undefined')
+    return false;
     let displayIcon = true;
     let expression = dateDifference;
     if(dateDifference > 7)

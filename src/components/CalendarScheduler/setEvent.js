@@ -15,14 +15,17 @@ export const EventDetail = (info, props) => {
   const activeStartData = moment(activeStart);
   const activeEndData = moment(activeEnd);
   const dateDifference = activeEndData.diff(activeStartData, 'days');
-  const displayIconLink = iconFileCases(eventIconJson, dateDifference);
-
+  let displayIconLink = false;
+  if(eventIconJson !== undefined) {
+    displayIconLink = iconFileCases(eventIconJson, dateDifference);
+  }  
   const content = (
     <Popover content={popoverData(info, ...[props], dateDifference)} title={event.title}>
       <div className="fc-title-wrap">
         <div className="fc-title">{event.title}</div>
         {
-          displayIconLink && <IconFile 
+          displayIconLink && 
+          eventIconJson !== undefined && <IconFile 
             eventIconJson={eventIconJson}
             eventIconClick={eventIconClick}
             info={info}

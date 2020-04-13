@@ -66,11 +66,11 @@ const Home = () => {
             eventClicked(event, data);
           }}
           eventIconJson={{
-            'firstIcon': { 'display': true, 'icon': 'fas fa-edit'},
-            'secondIcon': { 'display': true, 'icon': 'fa fa-plus'},
-            'hideAll': false,
-            'hideFromWeekView': true,
-            'displayPopOverIconInWeek': false,
+            // 'firstIcon': { 'display': true, 'icon': 'fas fa-edit'},
+            // 'secondIcon': { 'display': true, 'icon': 'fa fa-plus'},
+            // 'hideAll': false,
+            // 'hideFromWeekView': false,
+            // 'displayPopOverIconInWeek': true,
           }}
           funWithoutEvent={(info) => singleDateClicked(info)}
         />
