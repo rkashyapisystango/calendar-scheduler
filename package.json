@@ -24,7 +24,7 @@
     "@fullcalendar/resource-daygrid": "^4.4.0",
     "@fullcalendar/resource-timegrid": "^4.4.0",
     "@fullcalendar/resource-timeline": "^4.4.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.0.3",
     "eslint-config-react-app": "^5.0.2",
     "eslint-plugin-flowtype": "^3.13.0",
